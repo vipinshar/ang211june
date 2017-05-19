@@ -6,14 +6,15 @@ import { PeopleserviceService } from './people/shared/peopleservice.service';
   selector: 'vipin',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [PeopleserviceService]
+  providers: [PeopleserviceService],
+  
 })
 
 export class AppComponent {
   constructor(private _PeopleserviceService: PeopleserviceService) {  }
   model = new PeopleModel();
  message='';
- 
+
   SaveRecord() {
     this._PeopleserviceService.saveData(this.model);
     this.model = new PeopleModel();

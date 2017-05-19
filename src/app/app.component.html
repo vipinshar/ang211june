@@ -7,22 +7,28 @@
     <div class="container">
  
  <label><b>Name</b></label>
-      <input type="text" placeholder="Enter Name" name="Name" required [(ngModel)]="model.Name">
+      <input type="text" placeholder="Enter Name" name="Name" required [(ngModel)]="model.Name" #Name="ngModel">
+      <div [hidden]="Name.valid" class="alert alert-danger">* Required</div>
+          
 
       <label><b>Email</b></label>
       <input type="text" placeholder="Enter Email" name="Email" required [(ngModel)]="model.Email"> 
 
       <label><b>Mobile</b></label>
-      <input type="text" placeholder="Enter Mobile" name="Mobile" required [(ngModel)]="model.Mobile"> 
+      <input type="text" placeholder="Enter Mobile" name="Mobile" required [(ngModel)]="model.Mobile" #Email="ngModel"> 
+        <div [hidden]="Email.valid" class="alert alert-danger">* Required</div>
 
       <label><b>Address</b></label>
       <input type="text" placeholder="Enter Address" name="Address" required [(ngModel)]="model.Address">
 
       <label><b>Number Of People</b></label>
-      <input type="text" placeholder="No. of People" name="People" required [(ngModel)]="model.NoPeople">
+      <input type="text" placeholder="No. of People" name="People" [(ngModel)]="model.NoPeople">
       
       <div class="clearfix">
-        <button (click)="SaveRecord()" type="button" class="signupbtn">Submit</button>
+        <button (click)="SaveRecord()" type="button" [disabled]="!regForm.form.valid" class="signupbtn">Submit</button>
       </div>
     </div>
+   
   </form>
+
+   <router-outlet></router-outlet>
