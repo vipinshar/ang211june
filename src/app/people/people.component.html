@@ -1,7 +1,31 @@
-<p>
-  people works!
-</p>
+  
 
+<form #regForm="ngForm" class="modal-content animate">
+  {{message}}
+    <div class="container">
+      <label><b>Name</b></label>
+      <input type="text" placeholder="Enter Name" name="Name" required [(ngModel)]="model.Name" #Name="ngModel">
+      <div [hidden]="Name.valid" class="alert alert-danger">* Name is required</div>
+          
 
+      <label><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="Email" required [(ngModel)]="model.Email"> 
+      
 
-<app-people></app-people>
+      <label><b>Mobile</b></label>
+      <input appOnlynumber="true" type="text" placeholder="Enter Mobile" name="Mobile" required [(ngModel)]="model.Mobile" #Mobile="ngModel"> 
+        <div [hidden]="Mobile.valid" class="alert alert-danger">* Mobile is required</div>
+
+      <label><b>Address</b></label>
+      <input type="text" placeholder="Enter Address" name="Address" required [(ngModel)]="model.Address">
+
+      <label><b>Number Of People</b></label>
+      <input type="text" placeholder="No. of People" name="People" [(ngModel)]="model.NoPeople">
+      
+      <div class="clearfix">
+        <button (click)="SaveRecord()" type="button" [disabled]="!regForm.form.valid" class="signupbtn">Submit</button>
+      </div>
+    </div>
+   
+  </form>
+  
